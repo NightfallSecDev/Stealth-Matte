@@ -8,7 +8,7 @@ const defaultProducts = [
         originalPrice: 399,
         rating: 4.9,
         reviews: 142,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_earphones_1779132350677.png',
+        image: 'images/stealth_earphones.png',
         desc: 'Audiophile-grade wireless earphones engineered with custom 11mm planar drivers, active noise cancellation, and dark titanium acoustic chambers.',
         isBestseller: false,
         specs: {
@@ -29,7 +29,7 @@ const defaultProducts = [
         originalPrice: 799,
         rating: 5.0,
         reviews: 284,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_smartwatch_1779132364774.png',
+        image: 'images/stealth_smartwatch.png',
         desc: 'Flagship smart horology featuring a forged titanium chassis, sapphire crystal display, dual-frequency GPS, and 14-day ultra endurance battery.',
         isBestseller: true,
         specs: {
@@ -49,7 +49,7 @@ const defaultProducts = [
         originalPrice: 69,
         rating: 4.8,
         reviews: 95,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_mobile_skin_177913237弱665.png',
+        image: 'images/stealth_mobile_skin.png',
         desc: 'Textured matte skin infused with military-grade 3M vinyl. Features precision geometric electric orange tracings and zero-residue removal.',
         isBestseller: false,
         specs: {
@@ -68,7 +68,7 @@ const defaultProducts = [
         originalPrice: 1099,
         rating: 4.9,
         reviews: 76,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_earphones_1779132350677.png',
+        image: 'images/stealth_earphones.png',
         desc: 'Over-ear flagship planar magnetic headphones featuring 90mm ultra-thin diaphragms, open-back dark titanium grilles, and supreme acoustic fidelity.',
         isBestseller: false,
         specs: {
@@ -88,7 +88,7 @@ const defaultProducts = [
         originalPrice: 949,
         rating: 4.9,
         reviews: 112,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_smartwatch_1779132364774.png',
+        image: 'images/stealth_smartwatch.png',
         desc: 'Limited run tactical smartwatch featuring a matte black ceramic bezel, night-vision optimized AMOLED display, and military telemetry tracking.',
         isBestseller: false,
         specs: {
@@ -108,7 +108,7 @@ const defaultProducts = [
         originalPrice: 499,
         rating: 4.8,
         reviews: 88,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_earphones_1779132350677.png',
+        image: 'images/stealth_earphones.png',
         desc: 'Professional in-ear monitors equipped with tribrid electrostatic planar drivers, custom titanium acoustic nozzles, and lossless LDAC transmission.',
         isBestseller: false,
         specs: {
@@ -128,7 +128,7 @@ const defaultProducts = [
         originalPrice: 75,
         rating: 4.7,
         reviews: 64,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_mobile_skin_1779132379665.png',
+        image: 'images/stealth_mobile_skin.png',
         desc: 'High-visibility architectural skin dominated by electric orange #FF5722 honeycomb tracings. Offers maximum tactile grip and zero thermal throttling.',
         isBestseller: false,
         specs: {
@@ -147,7 +147,7 @@ const defaultProducts = [
         originalPrice: 1199,
         rating: 5.0,
         reviews: 156,
-        image: '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_smartwatch_1779132364774.png',
+        image: 'images/stealth_smartwatch.png',
         desc: 'Ultra-premium horology powered by invisible solar-harvesting sapphire crystal. Features deep violet shadow titanium accents and infinite battery life.',
         isBestseller: false,
         specs: {
@@ -398,7 +398,7 @@ class StoreManager {
             total += item.price * item.qty;
             html += `
                 <div class="cart-item">
-                    <img src="${item.image}" alt="${item.title}" class="cart-item-img">
+                    <img src="${this.getBasePath() + item.image}" alt="${item.title}" class="cart-item-img">
                     <div class="cart-item-info">
                         <div class="cart-item-title">${item.title}</div>
                         <div class="cart-item-price">$${item.price * item.qty}</div>
@@ -499,7 +499,7 @@ class StoreManager {
                 <div class="product-card ${product.isBestseller ? 'bestseller-card' : ''}">
                     ${product.isBestseller ? `<div class="product-badge bestseller"><i class="fas fa-crown"></i> Best Seller</div>` : ''}
                     <a href="${basePath}storefront/product.html?id=${product.id}" class="product-image-wrapper">
-                        <img src="${product.image}" alt="${product.title}" class="product-image">
+                        <img src="${basePath + product.image}" alt="${product.title}" class="product-image">
                     </a>
                     <div class="product-content">
                         <div>
@@ -586,7 +586,7 @@ class StoreManager {
                 <div class="cart-body" style="padding: 0; max-height: 300px; overflow-y: auto; margin-bottom: 2rem;">
                     ${this.cart.map(item => `
                         <div class="cart-item" style="margin-bottom: 1rem;">
-                            <img src="${item.image}" alt="${item.title}" class="cart-item-img" style="width: 60px; height: 60px;">
+                            <img src="${this.getBasePath() + item.image}" alt="${item.title}" class="cart-item-img" style="width: 60px; height: 60px;">
                             <div class="cart-item-info">
                                 <div class="cart-item-title">${item.title}</div>
                                 <div class="cart-item-price">$${item.price} x ${item.qty}</div>
@@ -685,7 +685,7 @@ class StoreManager {
                 <tr>
                     <td>
                         <div style="display: flex; align-items: center; gap: 1rem;">
-                            <img src="${p.image}" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover; background: var(--bg-dark);">
+                            <img src="${this.getBasePath() + p.image}" style="width: 48px; height: 48px; border-radius: 10px; object-fit: cover; background: var(--bg-dark);">
                             <div>
                                 <div style="font-weight: 700; color: white;">${p.title}</div>
                                 <div style="font-size: 0.8rem; color: var(--text-muted);">${p.category}</div>
