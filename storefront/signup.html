@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-height, initial-scale=1.0">
+    <title>Deploy Elite Operative Account | Stealth Matte</title>
+    <meta name="description" content="Sign up for a Stealth Matte elite operative account to unlock aerospace-grade hardware, priority dispatch, and zero-logging telemetry.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .auth-container {
+            max-width: 550px;
+            margin: 6rem auto 10rem;
+            padding: 4rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), 0 0 40px rgba(255, 87, 34, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #FF9100);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .auth-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 87, 34, 0.15);
+            border: 2px solid var(--border-accent);
+            color: var(--accent);
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 0 25px rgba(255, 87, 34, 0.25);
+            animation: pulseGlow 2s infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.2); transform: scale(1); }
+            100% { box-shadow: 0 0 35px rgba(255, 87, 34, 0.4); transform: scale(1.03); }
+        }
+
+        .auth-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-subtitle {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        .auth-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.2s ease;
+        }
+
+        .auth-link:hover {
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            cursor: pointer;
+            line-height: 1.4;
+        }
+
+        .checkbox-group input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--accent);
+            cursor: pointer;
+            margin-top: 0.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span>STEALTH</span>
+                <span class="brand-dot"></span>
+                <span class="mono" style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">// MATTE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="./shop.html" class="nav-link">Shop Catalog</a></li>
+                <li><a href="./about.html" class="nav-link">About Us</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../admin/dashboard.html" class="nav-link">Command Center</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="./login.html" class="btn btn-secondary" style="padding: 0.5rem 1.25rem;">
+                    <i class="fas fa-sign-in-alt text-accent"></i> Operative Login
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Signup Main -->
+    <main class="auth-container">
+        <div class="auth-header">
+            <div class="auth-icon"><i class="fas fa-user-shield"></i></div>
+            <h1 class="auth-title">Deploy Operative Account</h1>
+            <p class="auth-subtitle">Initialize your personal armory access and priority logistics.</p>
+        </div>
+
+        <form id="signupForm">
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-user-tag text-accent" style="margin-right: 0.5rem;"></i> Operative Handle (Full Name)</label>
+                <input type="text" id="signupName" class="form-control" placeholder="e.g. Commander Shepard" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label"><i class="fas fa-envelope text-accent" style="margin-right: 0.5rem;"></i> Cybernetic Email Address</label>
+                <input type="email" id="signupEmail" class="form-control" placeholder="operative@stealthmatte.io" required>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-lock text-accent" style="margin-right: 0.5rem;"></i> 256-Bit Passkey</label>
+                    <input type="password" id="signupPass" class="form-control" placeholder="••••••••••••••••" required minlength="8">
+                </div>
+                <div class="form-group">
+                    <label class="form-label"><i class="fas fa-check-double text-accent" style="margin-right: 0.5rem;"></i> Confirm Passkey</label>
+                    <input type="password" id="signupPassConfirm" class="form-control" placeholder="••••••••••••••••" required minlength="8">
+                </div>
+            </div>
+
+            <div style="margin: 1.5rem 0 2.5rem;">
+                <label class="checkbox-group">
+                    <input type="checkbox" required checked>
+                    <span>I authorize military-grade 256-bit encryption of my personal telemetry and agree to the <a href="../legal/terms.html" class="auth-link">Terms of Service</a>.</span>
+                </label>
+            </div>
+
+            <button type="submit" class="btn btn-accent" style="width: 100%; justify-content: center; padding: 1.25rem; font-size: 1.1rem; margin-bottom: 2rem;">
+                <i class="fas fa-rocket"></i> Initialize Operative Account
+            </button>
+
+            <div style="text-align: center; color: var(--text-muted); border-top: 1px solid var(--border-glass); padding-top: 2rem;">
+                <span>Already an authorized operative?</span> 
+                <a href="./login.html" class="auth-link" style="margin-left: 0.5rem;">Log in to Armory</a>
+            </div>
+        </form>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+            <div>&copy; 2026 Stealth Matte Inc. All cybernetic rights reserved.</div>
+            <div class="mono" style="color: var(--accent);">// SECURE 256-BIT ENCRYPTED</div>
+        </div>
+    </footer>
+
+    <script src="../js/store.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const signupForm = document.getElementById('signupForm');
+            if (signupForm) {
+                signupForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const name = document.getElementById('signupName').value.trim();
+                    const email = document.getElementById('signupEmail').value.trim();
+                    const pass = document.getElementById('signupPass').value;
+                    const passConfirm = document.getElementById('signupPassConfirm').value;
+
+                    if (pass !== passConfirm) {
+                        alert('Cryptographic mismatch: Passkeys do not match.');
+                        return;
+                    }
+                    
+                    const user = { name: name, email: email, authDate: new Date().toISOString() };
+                    localStorage.setItem('stealth_user', JSON.stringify(user));
+                    
+                    store.showToast(`Account Deployed. Welcome to the Armory, Operative ${name}.`);
+                    
+                    setTimeout(() => {
+                        window.location.href = './shop.html';
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

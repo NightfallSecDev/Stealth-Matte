@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-height, initial-scale=1.0">
+    <title>Shop Hardware Arsenal | Stealth Matte</title>
+    <meta name="description" content="Browse our complete cybernetic collection of premium wireless earphones, forged titanium smartwatches, and architectural mobile skins.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span>STEALTH</span>
+                <span class="brand-dot"></span>
+                <span class="mono" style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">// MATTE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="./shop.html" class="nav-link active">Shop Catalog</a></li>
+                <li><a href="./about.html" class="nav-link">About Us</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../admin/dashboard.html" class="nav-link">Command Center</a></li>
+            </ul>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="./login.html" class="btn btn-secondary" id="navAuthBtn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <i class="fas fa-user-shield text-accent"></i> <span id="navAuthText">Operative Login</span>
+                </a>
+                <button class="cart-btn" aria-label="Open Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" style="display: none;">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Shop Header -->
+    <header class="hero" style="padding: 4rem 2rem 2rem;">
+        <h1>Hardware Catalog</h1>
+        <p>Explore the elite specifications of our cybernetic arsenal. Search by title, category, or telemetry.</p>
+        
+        <!-- Live Search Bar -->
+        <div class="search-bar-container" style="margin-top: 2rem;">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchCatalogInput" class="search-input" placeholder="Search planar acoustics, titanium watches, armor skins...">
+        </div>
+
+        <!-- Category Filters -->
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+            <button class="btn btn-accent filter-btn active" data-filter="all">All Hardware</button>
+            <button class="btn btn-secondary filter-btn" data-filter="Earphones">Earphones</button>
+            <button class="btn btn-secondary filter-btn" data-filter="Smartwatches">Smartwatches</button>
+            <button class="btn btn-secondary filter-btn" data-filter="Mobile Skins">Mobile Skins</button>
+        </div>
+    </header>
+
+    <!-- Product Grid (4 Products in a Row) -->
+    <main style="max-width: 1400px; margin: 0 auto 8rem; padding: 0 2rem; width: 100%;">
+        <div class="four-col-grid" id="shopGrid">
+            <!-- Dynamically populated by store.js -->
+        </div>
+    </main>
+
+    <!-- Cart Drawer Modal -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <div class="cart-title">
+                    <i class="fas fa-shopping-bag text-accent"></i>
+                    <span>Your Arsenal</span>
+                </div>
+                <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-body" id="cartBody">
+                <!-- Dynamically populated -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary-row">
+                    <span style="color: var(--text-muted);">Estimated Total</span>
+                    <span class="cart-total" id="cartTotal">$0</span>
+                </div>
+                <a href="./checkout.html" id="cartCheckoutBtn" class="btn btn-accent" style="width: 100%; justify-content: center; padding: 1.25rem;">
+                    Proceed to Secure Checkout <i class="fas fa-lock"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="../index.html" class="brand" style="margin-bottom: 1.5rem;">
+                    <span>STEALTH</span><span class="brand-dot"></span>
+                </a>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; max-width: 360px;">
+                    Premium cybernetic hardware, audiophile acoustics, and smart horology engineered for the elite.
+                </p>
+                <div style="display: flex; gap: 1rem; color: white; font-size: 1.25rem;">
+                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hardware</h4>
+                <div class="footer-links">
+                    <a href="./shop.html" class="footer-link">Earphones X1</a>
+                    <a href="./shop.html" class="footer-link">Chronos Watch V</a>
+                    <a href="./shop.html" class="footer-link">Armor Mobile Skins</a>
+                    <a href="./shop.html" class="footer-link">Limited Editions</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Command Center</h4>
+                <div class="footer-links">
+                    <a href="../admin/dashboard.html" class="footer-link">Analytics Dashboard</a>
+                    <a href="../admin/products.html" class="footer-link">Product Manager</a>
+                    <a href="../admin/orders.html" class="footer-link">Order Tracking</a>
+                    <a href="./about.html" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Support</h4>
+                <div class="footer-links">
+                    <a href="../legal/privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="../legal/terms.html" class="footer-link">Terms of Service</a>
+                    <a href="../legal/refund.html" class="footer-link">Refund Policy</a>
+                    <a href="./contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 Stealth Matte Inc. All cybernetic rights reserved.</div>
+            <div class="mono" style="color: var(--accent);">// SECURE 256-BIT ENCRYPTED</div>
+        </div>
+    </footer>
+
+    <script src="../js/store.js"></script>
+</body>
+</html>

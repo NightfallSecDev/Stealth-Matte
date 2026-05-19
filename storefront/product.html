@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-height, initial-scale=1.0">
+    <title>Hardware Specification | Stealth Matte</title>
+    <meta name="description" content="Explore the elite engineering, aerospace-grade materials, and acoustic fidelity of our cybernetic hardware.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .product-detail-grid {
+            max-width: 1400px;
+            margin: 4rem auto 8rem;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        @media (max-width: 1024px) {
+            .product-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+        }
+
+        .gallery-wrapper {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 32px;
+            padding: 4rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .gallery-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-wrapper:hover .gallery-image {
+            transform: scale(1.05);
+        }
+
+        .info-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .badge-category {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: rgba(255, 87, 34, 0.15);
+            border: 1px solid var(--border-accent);
+            color: var(--accent);
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .prod-title {
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+
+        .prod-price {
+            font-family: var(--font-mono);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .prod-stock {
+            font-size: 1rem;
+            font-family: var(--font-sans);
+            color: #4CAF50;
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            padding: 0.35rem 1rem;
+            border-radius: 100px;
+            font-weight: 600;
+        }
+
+        .prod-desc {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        .qty-selector {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+            width: fit-content;
+        }
+
+        .qty-selector button {
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 700;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: var(--bg-dark);
+            border: 1px solid var(--border-glass);
+        }
+
+        .qty-selector button:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .spec-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-glass);
+            border-radius: 24px;
+            padding: 2.5rem;
+        }
+
+        .spec-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="../index.html" class="brand">
+                <span>STEALTH</span>
+                <span class="brand-dot"></span>
+                <span class="mono" style="font-size: 1rem; font-weight: 500; color: var(--text-muted);">// MATTE</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="./shop.html" class="nav-link active">Shop Catalog</a></li>
+                <li><a href="./about.html" class="nav-link">About Us</a></li>
+                <li><a href="./contact.html" class="nav-link">Contact</a></li>
+                <li><a href="../admin/dashboard.html" class="nav-link">Command Center</a></li>
+            </ul>
+            <div class="nav-actions" style="display: flex; align-items: center; gap: 1rem;">
+                <a href="./login.html" class="btn btn-secondary" id="navAuthBtn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">
+                    <i class="fas fa-user-shield text-accent"></i> <span id="navAuthText">Operative Login</span>
+                </a>
+                <button class="cart-btn" aria-label="Open Cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-badge" style="display: none;">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Product Detail Container -->
+    <main class="product-detail-grid" id="productDetailContainer">
+        <!-- Dynamically rendered -->
+    </main>
+
+    <!-- Cart Drawer Modal -->
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-drawer">
+            <div class="cart-header">
+                <div class="cart-title">
+                    <i class="fas fa-shopping-bag text-accent"></i>
+                    <span>Your Arsenal</span>
+                </div>
+                <button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="cart-body" id="cartBody">
+                <!-- Dynamically populated -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary-row">
+                    <span style="color: var(--text-muted);">Estimated Total</span>
+                    <span class="cart-total" id="cartTotal">$0</span>
+                </div>
+                <a href="./checkout.html" id="cartCheckoutBtn" class="btn btn-accent" style="width: 100%; justify-content: center; padding: 1.25rem;">
+                    Proceed to Secure Checkout <i class="fas fa-lock"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="../index.html" class="brand" style="margin-bottom: 1.5rem;">
+                    <span>STEALTH</span><span class="brand-dot"></span>
+                </a>
+                <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 2rem; max-width: 360px;">
+                    Premium cybernetic hardware, audiophile acoustics, and smart horology engineered for the elite.
+                </p>
+                <div style="display: flex; gap: 1rem; color: white; font-size: 1.25rem;">
+                    <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="footer-link"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Hardware</h4>
+                <div class="footer-links">
+                    <a href="./shop.html" class="footer-link">Earphones X1</a>
+                    <a href="./shop.html" class="footer-link">Chronos Watch V</a>
+                    <a href="./shop.html" class="footer-link">Armor Mobile Skins</a>
+                    <a href="./shop.html" class="footer-link">Limited Editions</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Command Center</h4>
+                <div class="footer-links">
+                    <a href="../admin/dashboard.html" class="footer-link">Analytics Dashboard</a>
+                    <a href="../admin/products.html" class="footer-link">Product Manager</a>
+                    <a href="../admin/orders.html" class="footer-link">Order Tracking</a>
+                    <a href="./about.html" class="footer-link">About Us</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Legal & Support</h4>
+                <div class="footer-links">
+                    <a href="../legal/privacy.html" class="footer-link">Privacy Policy</a>
+                    <a href="../legal/terms.html" class="footer-link">Terms of Service</a>
+                    <a href="../legal/refund.html" class="footer-link">Refund Policy</a>
+                    <a href="./contact.html" class="footer-link">Contact Us</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div>&copy; 2026 Stealth Matte Inc. All cybernetic rights reserved.</div>
+            <div class="mono" style="color: var(--accent);">// SECURE 256-BIT ENCRYPTED</div>
+        </div>
+    </footer>
+
+    <script src="../js/store.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('id') || 'stealth-smartwatch';
+            const product = store.products.find(p => p.id === productId) || store.products[1];
+
+            const container = document.getElementById('productDetailContainer');
+            if (!container) return;
+
+            document.title = `${product.title} | Stealth Matte`;
+
+            let currentQty = 1;
+
+            window.updateGalleryImage = (el, src) => {
+                const mainImg = document.getElementById('mainGalleryImage');
+                if (mainImg) {
+                    mainImg.style.opacity = 0;
+                    setTimeout(() => {
+                        mainImg.src = src;
+                        mainImg.style.opacity = 1;
+                    }, 150);
+                }
+                document.querySelectorAll('.thumbnail-card').forEach(card => {
+                    card.style.borderColor = 'var(--border-glass)';
+                });
+                el.style.borderColor = 'var(--accent)';
+            };
+
+            // Live Urgency Countdown Timer
+            let timerTotalSeconds = 4 * 3600 + 32 * 60 + 18;
+            setInterval(() => {
+                if (timerTotalSeconds > 0) timerTotalSeconds--;
+                const hours = Math.floor(timerTotalSeconds / 3600);
+                const minutes = Math.floor((timerTotalSeconds % 3600) / 60);
+                const seconds = timerTotalSeconds % 60;
+                
+                const hEl = document.getElementById('timerHours');
+                const mEl = document.getElementById('timerMinutes');
+                const sEl = document.getElementById('timerSeconds');
+                
+                if (hEl) hEl.textContent = String(hours).padStart(2, '0');
+                if (mEl) mEl.textContent = String(minutes).padStart(2, '0');
+                if (sEl) sEl.textContent = String(seconds).padStart(2, '0');
+            }, 1000);
+
+            const render = () => {
+                container.innerHTML = `
+                    <div class="gallery-container" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                        <div class="gallery-wrapper" style="background: var(--bg-card); border: 1px solid var(--border-glass); border-radius: 32px; padding: 3rem; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; box-shadow: 0 20px 40px rgba(0,0,0,0.3);">
+                            <img src="${product.image}" alt="${product.title}" id="mainGalleryImage" class="gallery-image" style="max-height: 400px; width: auto; object-fit: contain; transition: all 0.3s ease;">
+                        </div>
+                        <div class="gallery-thumbnails" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;">
+                            <div class="thumbnail-card active" onclick="updateGalleryImage(this, '${product.image}')" style="background: var(--bg-card); border: 2px solid var(--accent); border-radius: 16px; padding: 1rem; cursor: pointer; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+                                <img src="${product.image}" alt="Thumbnail 1" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+                            <div class="thumbnail-card" onclick="updateGalleryImage(this, '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_earphones_1779132350677.png')" style="background: var(--bg-card); border: 2px solid var(--border-glass); border-radius: 16px; padding: 1rem; cursor: pointer; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+                                <img src="/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_earphones_1779132350677.png" alt="Thumbnail 2" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+                            <div class="thumbnail-card" onclick="updateGalleryImage(this, '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_smartwatch_1779132364774.png')" style="background: var(--bg-card); border: 2px solid var(--border-glass); border-radius: 16px; padding: 1rem; cursor: pointer; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+                                <img src="/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_smartwatch_1779132364774.png" alt="Thumbnail 3" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+                            <div class="thumbnail-card" onclick="updateGalleryImage(this, '/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_mobile_skin_1779132379665.png')" style="background: var(--bg-card); border: 2px solid var(--border-glass); border-radius: 16px; padding: 1rem; cursor: pointer; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease;">
+                                <img src="/home/kali/.gemini/antigravity/brain/496d9c24-1ca8-4c10-9a12-3acb86b95fab/stealth_mobile_skin_1779132379665.png" alt="Thumbnail 4" style="max-height: 100%; max-width: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-wrapper">
+                        <div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                                <span class="badge-category">${product.category}</span>
+                                <div style="display: flex; align-items: center; gap: 0.5rem; color: #FFD700; font-size: 1.1rem; font-weight: 700;">
+                                    <i class="fas fa-star"></i>
+                                    <span>${product.rating || '4.9'}</span>
+                                    <span style="color: var(--text-muted); font-size: 0.9rem; font-weight: 500;">(${product.reviews || '128'} Customer Reviews)</span>
+                                </div>
+                            </div>
+                            <h1 class="prod-title" style="margin-bottom: 1.5rem;">${product.title}</h1>
+                            <div class="prod-price" style="display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
+                                <span style="font-size: 3rem; font-weight: 800; color: white;">$${product.price}</span>
+                                ${product.originalPrice ? `<span style="text-decoration: line-through; color: var(--text-muted); font-size: 1.75rem; font-family: var(--font-mono);">$${product.originalPrice}</span>
+                                <span style="background: rgba(255, 87, 34, 0.15); border: 1px solid var(--border-accent); color: var(--accent); font-size: 1rem; font-weight: 700; padding: 0.4rem 1rem; border-radius: 100px; font-family: var(--font-sans);">SAVE $${product.originalPrice - product.price}</span>` : ''}
+                                <span class="prod-stock" style="margin-left: auto;"><i class="fas fa-check-circle"></i> In Stock & Ready to Ship</span>
+                            </div>
+                        </div>
+
+                        <!-- Urgency & Dispatch Telemetry Timers -->
+                        <div style="background: linear-gradient(135deg, rgba(255, 87, 34, 0.1) 0%, rgba(15, 15, 21, 0.8) 100%); border: 1px solid var(--border-accent); border-radius: 24px; padding: 1.75rem 2.25rem; display: flex; flex-direction: column; gap: 1.25rem; margin: 2rem 0; box-shadow: 0 10px 30px rgba(255, 87, 34, 0.08);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                                <div style="display: flex; align-items: center; gap: 0.75rem;">
+                                    <div style="width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 15px var(--accent); animation: pulseGlow 1.5s infinite;"></div>
+                                    <span style="font-weight: 800; color: white; font-size: 1.15rem; letter-spacing: 0.05em;">⚡ ELITE FLASH SALE ENDS IN:</span>
+                                </div>
+                                <div class="mono" style="display: flex; gap: 0.5rem; font-size: 1.35rem; font-weight: 800; color: var(--accent); align-items: center;">
+                                    <span style="background: var(--bg-dark); padding: 0.4rem 0.8rem; border-radius: 10px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);" id="timerHours">04</span>h
+                                    <span style="background: var(--bg-dark); padding: 0.4rem 0.8rem; border-radius: 10px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);" id="timerMinutes">32</span>m
+                                    <span style="background: var(--bg-dark); padding: 0.4rem 0.8rem; border-radius: 10px; border: 1px solid var(--border-glass); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);" id="timerSeconds">18</span>s
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid var(--border-glass); padding-top: 1.25rem; display: flex; align-items: center; gap: 1rem; color: var(--text-muted); font-size: 1.05rem;">
+                                <i class="fas fa-shipping-fast text-accent" style="font-size: 1.4rem;"></i>
+                                <span>🚀 <strong style="color: white;">Priority Dispatch:</strong> Order within <span class="mono text-accent" style="font-weight: 700;">2 hrs 15 mins</span> for guaranteed delivery by tomorrow.</span>
+                            </div>
+                        </div>
+
+                        <p class="prod-desc">${product.desc}</p>
+
+                        <div class="qty-selector">
+                            <span style="color: var(--text-muted); font-weight: 600;">Quantity</span>
+                            <button id="detailSub">-</button>
+                            <span class="mono" id="detailQty" style="font-size: 1.25rem; font-weight: 700; width: 30px; text-align: center;">${currentQty}</span>
+                            <button id="detailAdd">+</button>
+                        </div>
+
+                        <div style="display: flex; gap: 1.5rem;">
+                            <button class="btn btn-accent" id="detailAddCart" style="flex-grow: 1; padding: 1.25rem; font-size: 1.1rem;">
+                                <i class="fas fa-shopping-cart"></i> Add to Arsenal ($${product.price * currentQty})
+                            </button>
+                            <button class="btn btn-secondary" style="padding: 1.25rem; width: 64px;" title="Add to Wishlist">
+                                <i class="fas fa-heart text-accent"></i>
+                            </button>
+                        </div>
+
+                        <!-- Hardware Specifications Box -->
+                        <div class="spec-box">
+                            <h3><i class="fas fa-microchip text-accent"></i> Hardware Specifications</h3>
+                            <div class="spec-grid" style="grid-template-columns: 1fr 1fr;">
+                                ${Object.entries(product.specs).map(([key, val]) => `
+                                    <div class="spec-item" style="border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem;">
+                                        <span class="spec-label">${key}</span>
+                                        <span class="spec-value" style="font-size: 1.1rem;">${val}</span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.getElementById('detailSub').addEventListener('click', () => {
+                    if (currentQty > 1) {
+                        currentQty--;
+                        render();
+                    }
+                });
+
+                document.getElementById('detailAdd').addEventListener('click', () => {
+                    currentQty++;
+                    render();
+                });
+
+                document.getElementById('detailAddCart').addEventListener('click', () => {
+                    store.addToCart(product.id, currentQty);
+                });
+            };
+
+            render();
+        });
+    </script>
+</body>
+</html>
